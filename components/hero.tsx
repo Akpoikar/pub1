@@ -21,14 +21,20 @@ export function Hero() {
       })
     }
 
+    // Check if device is mobile (screen width < 768px)
+    const isMobile = () => window.innerWidth < 768
+
     const handleScroll = () => {
-      if (contentRef.current) {
-        const scrolled = window.scrollY
-        const opacity = Math.max(0, 1 - scrolled / 500)
-        const translateY = scrolled * 0.5
-        contentRef.current.style.opacity = opacity.toString()
-        contentRef.current.style.transform = `translateY(${translateY}px)`
+      // Skip scroll animation on mobile
+      if (isMobile() || !contentRef.current) {
+        return
       }
+
+      const scrolled = window.scrollY
+      const opacity = Math.max(0, 1 - scrolled / 500)
+      const translateY = scrolled * 0.5
+      contentRef.current.style.opacity = opacity.toString()
+      contentRef.current.style.transform = `translateY(${translateY}px)`
     }
 
     window.addEventListener("scroll", handleScroll)

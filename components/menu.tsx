@@ -112,16 +112,16 @@ export function Menu() {
             }
           }}
         >
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-16 bg-card/50 backdrop-blur-sm border border-primary/20 p-2">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-16 bg-transparent border border-primary/20 p-0 rounded-none h-14">
             <TabsTrigger
               value="food"
-              className="text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-medium tracking-wide transition-all duration-300 data-[state=active]:scale-105"
+              className="text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-foreground font-medium tracking-wide transition-all duration-300 rounded-none h-full py-3 m-0 border-0"
             >
               Food
             </TabsTrigger>
             <TabsTrigger
               value="drinks"
-              className="text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-medium tracking-wide transition-all duration-300 data-[state=active]:scale-105"
+              className="text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-foreground font-medium tracking-wide transition-all duration-300 rounded-none h-full py-3 m-0 border-0"
             >
               Drinks
             </TabsTrigger>
