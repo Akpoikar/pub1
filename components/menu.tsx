@@ -74,7 +74,7 @@ export function Menu() {
   ]
 
   return (
-    <section id="menu" className="relative py-32 md:py-40 overflow-hidden">
+    <section id="menu" className="relative py-20 md:py-28 sm:pt-2 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img src="/dark-wood-texture-with-subtle-grain.jpg" alt="" className="w-full h-full object-cover opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-muted/50 to-background/90" />

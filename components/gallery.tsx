@@ -49,7 +49,7 @@ export function Gallery() {
   ]
 
   return (
-    <section id="gallery" ref={sectionRef} className="relative py-32 md:py-40 overflow-hidden">
+    <section id="gallery" ref={sectionRef} className="relative pt-8 pb-20 md:py-28 sm:pt-2 overflow-hidden">
       <div className="absolute inset-0 z-0 bg-background" />
 
       <div className="container mx-auto px-4 relative z-10">

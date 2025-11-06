@@ -58,7 +58,7 @@ export function Events() {
   ]
 
   return (
-    <section id="events" ref={sectionRef} className="relative py-32 md:py-40 overflow-hidden">
+    <section id="events" ref={sectionRef} className="relative py-20 md:py-28 sm:pt-2 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img src="/luxury-pub-event-space-with-stage-lighting.jpg" alt="" className="w-full h-full object-cover opacity-15" />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
