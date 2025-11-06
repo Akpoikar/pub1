@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   description:
     "Experience the warmth of an authentic Irish pub with exceptional food, craft drinks, and live entertainment in the heart of the city.",
   generator: "v0.app",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 }
 
 export default function RootLayout({
