@@ -5,12 +5,14 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, CheckCircle2 } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { SITE } from "@/lib/site"
 
 export function Contact() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,6 +33,7 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitted(true)
   }
 
   return (
@@ -51,7 +54,7 @@ export function Contact() {
             <div className="h-px w-24 bg-primary/50" />
           </div>
           <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
-            We look forward to welcoming you
+            We&apos;d love to see you — walk-ins welcome, reservations encouraged on weekends
           </p>
         </div>
 
@@ -65,8 +68,8 @@ export function Contact() {
                 <div>
                   <h3 className="font-serif text-2xl font-bold mb-3 text-foreground">Address</h3>
                   <div className="h-px w-12 bg-primary mb-3" />
-                  <p className="text-muted-foreground text-lg">Raisova 916/15</p>
-                  <p className="text-muted-foreground text-lg">709 00 Ostrava 9</p>
+                  <p className="text-muted-foreground text-lg">{SITE.address.line1}</p>
+                  <p className="text-muted-foreground text-lg">{SITE.address.line2}</p>
                 </div>
               </div>
             </Card>
@@ -79,7 +82,7 @@ export function Contact() {
                 <div>
                   <h3 className="font-serif text-2xl font-bold mb-3 text-foreground">Phone</h3>
                   <div className="h-px w-12 bg-primary mb-3" />
-                  <p className="text-muted-foreground text-lg">+420 777 212 491</p>
+                  <p className="text-muted-foreground text-lg">{SITE.phone}</p>
                   <p className="text-sm text-muted-foreground mt-2">Call for reservations</p>
                 </div>
               </div>
@@ -93,8 +96,8 @@ export function Contact() {
                 <div>
                   <h3 className="font-serif text-2xl font-bold mb-3 text-foreground">Email</h3>
                   <div className="h-px w-12 bg-primary mb-3" />
-                  <p className="text-muted-foreground text-lg">sales@yarify.tech</p>
-                  <p className="text-sm text-muted-foreground mt-2">We'll respond within 24 hours</p>
+                  <p className="text-muted-foreground text-lg">{SITE.email}</p>
+                  <p className="text-sm text-muted-foreground mt-2">We&apos;ll get back to you soon</p>
                 </div>
               </div>
             </Card>
@@ -108,9 +111,9 @@ export function Contact() {
                   <h3 className="font-serif text-2xl font-bold mb-3 text-foreground">Hours</h3>
                   <div className="h-px w-12 bg-primary mb-3" />
                   <div className="space-y-2 text-muted-foreground text-lg">
-                    <p>Monday - Thursday: 11:00 AM - 11:00 PM</p>
-                    <p>Friday - Saturday: 11:00 AM - 1:00 AM</p>
-                    <p>Sunday: 10:00 AM - 10:00 PM</p>
+                    {SITE.hours.detail.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -118,47 +121,68 @@ export function Contact() {
           </div>
 
           <Card className="p-10 bg-card/50 backdrop-blur-sm border-primary/20">
-            <h3 className="font-serif text-3xl font-bold mb-8 text-foreground">Send Us a Message</h3>
-            <div className="h-px w-20 bg-primary mb-8" />
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <Input
-                  type="text"
-                  placeholder="Your Name"
-                  required
-                  className="w-full bg-background/50 border-primary/20 focus:border-primary h-14 text-lg"
-                />
+            {isSubmitted ? (
+              <div className="flex flex-col items-center justify-center text-center py-12">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                  <CheckCircle2 className="w-10 h-10 text-primary" />
+                </div>
+                <h3 className="font-serif text-3xl font-bold mb-4 text-foreground">Message Sent!</h3>
+                <p className="text-muted-foreground text-lg mb-8">
+                  Thanks for reaching out. We&apos;ll be in touch shortly.
+                </p>
+                <Button
+                  variant="outline"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  onClick={() => setIsSubmitted(false)}
+                >
+                  Send Another Message
+                </Button>
               </div>
-              <div>
-                <Input
-                  type="email"
-                  placeholder="Your Email"
-                  required
-                  className="w-full bg-background/50 border-primary/20 focus:border-primary h-14 text-lg"
-                />
-              </div>
-              <div>
-                <Input
-                  type="tel"
-                  placeholder="Phone Number"
-                  className="w-full bg-background/50 border-primary/20 focus:border-primary h-14 text-lg"
-                />
-              </div>
-              <div>
-                <Textarea
-                  placeholder="Your Message"
-                  required
-                  className="w-full min-h-40 bg-background/50 border-primary/20 focus:border-primary text-lg"
-                />
-              </div>
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base font-medium tracking-wide glow-gold transition-all duration-300 hover:scale-105"
-              >
-                Send Message
-              </Button>
-            </form>
+            ) : (
+              <>
+                <h3 className="font-serif text-3xl font-bold mb-8 text-foreground">Send Us a Message</h3>
+                <div className="h-px w-20 bg-primary mb-8" />
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Input
+                      type="text"
+                      placeholder="Your Name"
+                      required
+                      className="w-full bg-background/50 border-primary/20 focus:border-primary h-14 text-lg"
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="email"
+                      placeholder="Your Email"
+                      required
+                      className="w-full bg-background/50 border-primary/20 focus:border-primary h-14 text-lg"
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="tel"
+                      placeholder="Phone Number"
+                      className="w-full bg-background/50 border-primary/20 focus:border-primary h-14 text-lg"
+                    />
+                  </div>
+                  <div>
+                    <Textarea
+                      placeholder="Your Message"
+                      required
+                      className="w-full min-h-40 bg-background/50 border-primary/20 focus:border-primary text-lg"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base font-medium tracking-wide glow-gold transition-all duration-300 hover:scale-105"
+                  >
+                    Send Message
+                  </Button>
+                </form>
+              </>
+            )}
           </Card>
         </div>
       </div>

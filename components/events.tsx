@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, Music, Users } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { IMAGES } from "@/lib/site"
 
 export function Events() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -38,21 +39,21 @@ export function Events() {
       title: "Trivia Night",
       day: "Every Wednesday",
       time: "7:00 PM - 9:00 PM",
-      description: "Test your knowledge and win prizes",
+      description: "Test your knowledge, win prizes, and enjoy a pint on us",
       icon: Users,
     },
     {
       title: "St. Patrick's Day Celebration",
       day: "March 17th",
       time: "All Day",
-      description: "Special menu, live music, and festivities",
+      description: "Special menu, live music, and festivities all day long",
       icon: Calendar,
     },
     {
       title: "Sunday Brunch",
       day: "Every Sunday",
       time: "10:00 AM - 2:00 PM",
-      description: "Traditional Irish breakfast and brunch specials",
+      description: "Full Irish breakfast and brunch specials",
       icon: Clock,
     },
   ]
@@ -60,7 +61,7 @@ export function Events() {
   return (
     <section id="events" ref={sectionRef} className="relative py-20 md:py-28 sm:pt-2 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img src="/luxury-pub-event-space-with-stage-lighting.jpg" alt="" className="w-full h-full object-cover opacity-15" />
+        <img src={IMAGES.eventSpace} alt="" className="w-full h-full object-cover opacity-15" />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       </div>
 
@@ -80,7 +81,7 @@ export function Events() {
             <div className="h-px w-24 bg-primary/50" />
           </div>
           <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
-            Join us for unforgettable experiences throughout the year
+            There&apos;s always something happening at the pub
           </p>
         </div>
 
@@ -114,14 +115,15 @@ export function Events() {
             <h3 className="font-serif text-3xl font-bold mb-4 text-foreground">Private Events</h3>
             <div className="h-px w-20 bg-primary mx-auto mb-6" />
             <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
-              Host your celebration in our exclusive space. Perfect for corporate gatherings, private parties, and
-              special occasions.
+              Got a birthday, work do, or family gathering? Our back room fits up to 40 guests — get in touch and
+              we&apos;ll sort the rest.
             </p>
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-base font-medium tracking-wide glow-gold transition-all duration-300 hover:scale-105"
+              asChild
             >
-              Inquire About Private Events
+              <a href="#contact">Inquire About Private Events</a>
             </Button>
           </div>
         </div>

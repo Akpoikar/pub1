@@ -3,6 +3,7 @@
 import { Card } from "@/components/ui/card"
 import { Beer, Music, Users, Award } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { IMAGES, SITE } from "@/lib/site"
 
 export function About() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -29,7 +30,7 @@ export function About() {
     {
       icon: Beer,
       title: "Craft Selection",
-      description: "50+ craft beers, whiskeys, and signature cocktails",
+      description: "50+ beers on tap, whiskeys, and house cocktails",
     },
     {
       icon: Music,
@@ -39,58 +40,56 @@ export function About() {
     {
       icon: Users,
       title: "Community Hub",
-      description: "A welcoming space for friends and family",
+      description: "A welcoming spot for friends, families, and regulars",
     },
     {
       icon: Award,
-      title: "Award Winning",
-      description: "Best Pub 2023 - City's Choice Awards",
+      title: "Local Favourite",
+      description: "Best Pub 2023 — Ostrava's Choice Awards",
     },
   ]
 
   return (
     <section id="about" ref={sectionRef} className="relative py-20 md:py-28 sm:pt-2 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img src="/dark-luxury-pub-interior-with-leather-seating-and-.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+        <img src={IMAGES.pubInterior} alt="" className="w-full h-full object-cover opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div
-          className={`max-w-4xl mx-auto text-center mb-20`}
-        >
-          <div 
+        <div className={`max-w-4xl mx-auto text-center mb-20`}>
+          <div
             className={`inline-block mb-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
             style={{ transitionDelay: "50ms" }}
           >
             <span className="text-primary text-sm font-medium tracking-[0.3em] uppercase">Our Story</span>
           </div>
-          <h2 
+          <h2
             className={`font-serif text-5xl md:text-7xl font-bold text-foreground mb-8 text-shadow-gold transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-95"}`}
             style={{ transitionDelay: "150ms" }}
           >
-            Welcome to Excellence
+            A Proper Irish Pub
           </h2>
           <div className="flex items-center justify-center gap-4 mb-10">
-            <div 
+            <div
               className={`h-px bg-primary/50 transition-all duration-700 ${isVisible ? "w-24 opacity-100" : "w-0 opacity-0"}`}
               style={{ transitionDelay: "300ms" }}
             />
-            <div 
+            <div
               className={`w-2 h-2 bg-primary rotate-45 transition-opacity duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
               style={{ transitionDelay: "400ms" }}
             />
-            <div 
+            <div
               className={`h-px bg-primary/50 transition-all duration-700 ${isVisible ? "w-24 opacity-100" : "w-0 opacity-0"}`}
               style={{ transitionDelay: "300ms" }}
             />
           </div>
-          <p 
+          <p
             className={`text-xl md:text-2xl text-muted-foreground leading-relaxed font-light transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
             style={{ transitionDelay: "500ms" }}
           >
-            Step into a world where tradition meets modern luxury. Our authentic Irish pub offers an unparalleled
-            atmosphere of refined elegance.
+            Pull up a stool, order a pint, and stay awhile. Good food, live music, and the kind of atmosphere you
+            can only find in a real pub.
           </p>
         </div>
 
@@ -112,38 +111,30 @@ export function About() {
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <div className="overflow-hidden">
-            </div>
             <div className="grid grid-cols-2 gap-6">
-              <img
-                src="/cozy-pub-booth-with-leather-seating.jpg"
-                alt="Seating"
-                className="w-full h-auto"
-              />
-              <img
-                src="/premium-whiskey-collection-on-wooden-shelves.jpg"
-                alt="Whiskey"
-                className="w-full h-auto"
-              />
+              <img src={IMAGES.cozyBooth} alt="Cozy pub seating" className="w-full h-auto" />
+              <img src={IMAGES.whiskey} alt="Whiskey collection" className="w-full h-auto" />
             </div>
           </div>
           <div className="space-y-6">
             <div className="inline-block mb-4">
-              <span className="text-primary text-sm font-medium tracking-[0.3em] uppercase">Since 2020</span>
+              <span className="text-primary text-sm font-medium tracking-[0.3em] uppercase">
+                Since {SITE.established}
+              </span>
             </div>
-            <h3 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-foreground">A Legacy of Excellence</h3>
+            <h3 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-foreground">Built on Tradition</h3>
             <div className="h-px w-20 bg-primary mb-6" />
             <p className="text-muted-foreground leading-relaxed text-lg mb-6">
-              Founded in 2020, Yarify was born from a passion to bring authentic Irish pub culture elevated to
-              new heights of luxury and sophistication.
+              {SITE.name} opened its doors in {SITE.established} with a simple idea: bring the warmth of an Irish pub
+              to Ostrava — honest food, well-poured pints, and a place where everyone knows your name.
             </p>
             <p className="text-muted-foreground leading-relaxed text-lg mb-6">
-              Every detail, from our hand-carved wooden bar to our carefully curated whiskey collection, has been
-              meticulously chosen to create an atmosphere of timeless elegance.
+              From our hand-carved bar to the whiskey shelf behind it, every corner was designed to feel like
+              you&apos;ve walked into a pub that&apos;s been here for generations.
             </p>
             <p className="text-muted-foreground leading-relaxed text-lg">
-              We pride ourselves on being more than just a pub—we're a destination where memories are crafted, stories
-              are shared, and excellence is the standard.
+              We&apos;re not just a restaurant — we&apos;re where Friday nights start, where stories get told, and
+              where the craic is always good.
             </p>
           </div>
         </div>

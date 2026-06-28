@@ -2,6 +2,7 @@
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useState } from "react"
+import { IMAGES } from "@/lib/site"
 
 export function Menu() {
   const [activeTab, setActiveTab] = useState("food")
@@ -11,32 +12,32 @@ export function Menu() {
     {
       name: "Traditional Irish Stew",
       description: "Tender lamb, potatoes, carrots, and herbs in rich gravy",
-      price: "$18",
+      price: "289 Kč",
     },
     {
       name: "Fish & Chips",
       description: "Beer-battered cod with hand-cut chips and mushy peas",
-      price: "$16",
+      price: "259 Kč",
     },
     {
       name: "Shepherd's Pie",
       description: "Ground lamb with vegetables, topped with creamy mashed potatoes",
-      price: "$17",
+      price: "269 Kč",
     },
     {
       name: "Bangers & Mash",
       description: "Irish sausages with mashed potatoes and onion gravy",
-      price: "$15",
+      price: "239 Kč",
     },
     {
       name: "Corned Beef & Cabbage",
       description: "Slow-cooked corned beef with cabbage, carrots, and potatoes",
-      price: "$19",
+      price: "299 Kč",
     },
     {
       name: "Boxty",
       description: "Traditional Irish potato pancakes with various fillings",
-      price: "$14",
+      price: "219 Kč",
     },
   ]
 
@@ -44,46 +45,46 @@ export function Menu() {
     {
       name: "Guinness Draught",
       description: "The perfect pint, poured to perfection",
-      price: "$8",
+      price: "89 Kč",
     },
     {
       name: "Irish Whiskey Flight",
       description: "Sample three premium Irish whiskeys",
-      price: "$22",
+      price: "249 Kč",
     },
     {
       name: "Irish Coffee",
       description: "Hot coffee, Irish whiskey, sugar, and cream",
-      price: "$12",
+      price: "129 Kč",
     },
     {
       name: "Craft Beer Selection",
       description: "Rotating selection of local and Irish craft beers",
-      price: "$7-10",
+      price: "79–119 Kč",
     },
     {
       name: "Signature Cocktails",
-      description: "Irish-inspired cocktails crafted by our mixologists",
-      price: "$13",
+      description: "Irish-inspired cocktails crafted by our bartenders",
+      price: "139 Kč",
     },
     {
       name: "Wine Selection",
       description: "Curated wines from around the world",
-      price: "$9-15",
+      price: "99–159 Kč",
     },
   ]
 
   return (
     <section id="menu" className="relative py-20 md:py-28 sm:pt-2 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img src="/dark-wood-texture-with-subtle-grain.jpg" alt="" className="w-full h-full object-cover opacity-10" />
+        <img src={IMAGES.woodTexture} alt="" className="w-full h-full object-cover opacity-10" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-muted/50 to-background/90" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-20">
           <div className="inline-block mb-6">
-            <span className="text-primary text-sm font-medium tracking-[0.3em] uppercase">Culinary Excellence</span>
+            <span className="text-primary text-sm font-medium tracking-[0.3em] uppercase">From the Kitchen</span>
           </div>
           <h2 className="font-serif text-5xl md:text-7xl font-bold text-foreground mb-8 text-shadow-gold">Our Menu</h2>
           <div className="flex items-center justify-center gap-4 mb-10">
@@ -92,12 +93,12 @@ export function Menu() {
             <div className="h-px w-24 bg-primary/50" />
           </div>
           <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
-            Savor authentic Irish cuisine elevated to perfection
+            Hearty Irish classics, cooked the way they should be
           </p>
         </div>
 
-        <Tabs 
-          defaultValue="food" 
+        <Tabs
+          defaultValue="food"
           className="max-w-6xl mx-auto"
           value={activeTab}
           onValueChange={(value) => {
@@ -128,18 +129,22 @@ export function Menu() {
           </TabsList>
 
           <TabsContent value="food" className="relative">
-            <div className={`transition-all duration-500 ease-in-out ${activeTab === "food" && !isAnimating ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95 pointer-events-none"}`}>
+            <div
+              className={`transition-all duration-500 ease-in-out ${activeTab === "food" && !isAnimating ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95 pointer-events-none"}`}
+            >
               <div className="mb-12 max-w-4xl mx-auto">
                 <div className="relative overflow-hidden rounded-lg aspect-[16/9] mb-12">
                   <img
-                    src="/traditional-irish-food-platter-with-stew-and-bread.jpg"
+                    src={IMAGES.irishStew}
                     alt="Traditional Irish Cuisine"
                     className="w-full h-full object-cover transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-700 ${activeTab === "food" && !isAnimating ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}>
+                  <div
+                    className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-700 ${activeTab === "food" && !isAnimating ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+                  >
                     <h3 className="text-white text-3xl md:text-4xl font-serif font-bold mb-2">Authentic Irish Cuisine</h3>
-                    <p className="text-white/90 text-lg">Handcrafted with traditional recipes and premium ingredients</p>
+                    <p className="text-white/90 text-lg">Traditional recipes, honest portions, made from scratch</p>
                   </div>
                 </div>
               </div>
@@ -148,8 +153,8 @@ export function Menu() {
                   <Card
                     key={index}
                     className={`p-8 bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 hover:bg-card/80 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 ${
-                      activeTab === "food" && !isAnimating 
-                        ? "opacity-100 translate-y-0 scale-100" 
+                      activeTab === "food" && !isAnimating
+                        ? "opacity-100 translate-y-0 scale-100"
                         : "opacity-0 translate-y-8 scale-95"
                     }`}
                     style={{ transitionDelay: `${index * 50}ms` }}
@@ -167,18 +172,22 @@ export function Menu() {
           </TabsContent>
 
           <TabsContent value="drinks" className="relative">
-            <div className={`transition-all duration-500 ease-in-out ${activeTab === "drinks" && !isAnimating ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95 pointer-events-none"}`}>
+            <div
+              className={`transition-all duration-500 ease-in-out ${activeTab === "drinks" && !isAnimating ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95 pointer-events-none"}`}
+            >
               <div className="mb-12 max-w-4xl mx-auto">
                 <div className="relative overflow-hidden rounded-lg aspect-[16/9] mb-12">
                   <img
-                    src="/craft-beer-taps-and-whiskey-bottles-on-pub-shelf.jpg"
+                    src={IMAGES.beerTaps}
                     alt="Craft Beer & Whiskey Selection"
                     className="w-full h-full object-cover transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-700 ${activeTab === "drinks" && !isAnimating ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}>
-                    <h3 className="text-white text-3xl md:text-4xl font-serif font-bold mb-2">Premium Beverages</h3>
-                    <p className="text-white/90 text-lg">Craft beers, fine whiskeys, and expertly crafted cocktails</p>
+                  <div
+                    className={`absolute bottom-0 left-0 right-0 p-8 transition-all duration-700 ${activeTab === "drinks" && !isAnimating ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+                  >
+                    <h3 className="text-white text-3xl md:text-4xl font-serif font-bold mb-2">Drinks at the Bar</h3>
+                    <p className="text-white/90 text-lg">Craft beers, fine whiskeys, and properly made cocktails</p>
                   </div>
                 </div>
               </div>
@@ -187,8 +196,8 @@ export function Menu() {
                   <Card
                     key={index}
                     className={`p-8 bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 hover:bg-card/80 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10 ${
-                      activeTab === "drinks" && !isAnimating 
-                        ? "opacity-100 translate-y-0 scale-100" 
+                      activeTab === "drinks" && !isAnimating
+                        ? "opacity-100 translate-y-0 scale-100"
                         : "opacity-0 translate-y-8 scale-95"
                     }`}
                     style={{ transitionDelay: `${index * 50}ms` }}

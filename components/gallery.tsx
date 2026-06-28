@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { IMAGES } from "@/lib/site"
 
 export function Gallery() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -25,26 +26,24 @@ export function Gallery() {
 
   const images = [
     {
-      src: "/traditional-irish-food-platter-with-stew-and-bread.jpg",
+      src: IMAGES.irishStew,
       alt: "Traditional Irish Food",
     },
-
-
     {
-      src: "/luxury-pub-bar-with-brass-fixtures-and-premium-spi.jpg",
-      alt: "Premium Bar",
+      src: IMAGES.bar,
+      alt: "The Bar",
     },
     {
-      src: "/cozy-pub-booth-with-leather-seating.jpg",
-      alt: "Private Booths",
+      src: IMAGES.cozyBooth,
+      alt: "Cozy Booths",
     },
     {
-      src: "/premium-whiskey-collection-on-wooden-shelves.jpg",
+      src: IMAGES.whiskey,
       alt: "Whiskey Collection",
     },
     {
-      src: "/luxury-pub-live-music-performance.jpg",
-      alt: "Live Entertainment",
+      src: IMAGES.liveMusic,
+      alt: "Live Music",
     },
   ]
 
@@ -66,7 +65,7 @@ export function Gallery() {
             <div className="h-px w-24 bg-primary/50" />
           </div>
           <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
-            Immerse yourself in the ambiance of refined luxury
+            A glimpse inside — the bar, the booths, and the buzz
           </p>
         </div>
 
@@ -79,11 +78,7 @@ export function Gallery() {
               } transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <img
-                src={image.src || "/placeholder.svg"}
-                alt={image.alt}
-                className="w-full h-full object-cover"
-              />
+              <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" />
               <div className="absolute inset-0 border-2 border-primary/0" />
               <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4">

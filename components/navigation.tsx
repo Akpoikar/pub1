@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X, MapPin, Phone, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { SITE } from "@/lib/site"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -52,13 +53,13 @@ export function Navigation() {
               className="flex items-center gap-3 text-2xl md:text-3xl font-serif font-bold text-primary tracking-wide hover:text-primary/80 transition-colors"
             >
               <Image
-                src="/logo.png"
-                alt="Yarify Logo"
+                src="/logo.svg"
+                alt={`${SITE.name} logo`}
                 width={40}
                 height={40}
                 className="object-contain"
               />
-              Yarify
+              {SITE.name}
             </Link>
 
             {/* Desktop Navigation */}
@@ -108,13 +109,13 @@ export function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <Image
-                  src="/logo.png"
-                  alt="Yarify Logo"
+                  src="/logo.svg"
+                  alt={`${SITE.name} logo`}
                   width={40}
                   height={40}
                   className="object-contain"
                 />
-                Yarify
+                {SITE.name}
               </Link>
               <button
                 className="text-white hover:text-primary transition-colors"
@@ -165,11 +166,11 @@ export function Navigation() {
             <div className="flex flex-col gap-4 mb-8 text-white/80">
               <div className="flex items-center gap-3">
                 <MapPin className="text-primary" size={18} />
-                <span className="text-sm">Raisova 916/15, 709 00 Ostrava 9</span>
+                <span className="text-sm">{SITE.address.full}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="text-primary" size={18} />
-                <span className="text-sm">+420 777 212 491</span>
+                <span className="text-sm">{SITE.phone}</span>
               </div>
             </div>
 

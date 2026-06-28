@@ -14,6 +14,7 @@ import { CalendarIcon, Clock, Users, MapPin, CheckCircle2 } from "lucide-react"
 import { format } from "date-fns"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
+import { SITE } from "@/lib/site"
 
 type TableStatus = "available" | "selected" | "reserved" | "unavailable"
 
@@ -79,12 +80,9 @@ export default function ReservationPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!date || !time || !guests || !selectedTable) {
-      alert("Please fill in all required fields and select a table")
       return
     }
     setIsSubmitted(true)
-    // In a real app, you would send this data to your backend
-    console.log("Reservation submitted:", { date, time, guests, selectedTable, formData })
   }
 
   const getTableColor = (status: TableStatus) => {
@@ -122,10 +120,10 @@ export default function ReservationPage() {
                 </div>
               </div>
               <CardTitle className="text-4xl font-serif mb-4 text-foreground">
-                Reservation Confirmed!
+                See You at {SITE.name}!
               </CardTitle>
               <CardDescription className="text-lg mb-8">
-                We've received your reservation request. You'll receive a confirmation email shortly.
+                Your table is booked. We look forward to welcoming you.
               </CardDescription>
               <div className="space-y-4 mb-8 text-left max-w-md mx-auto">
                 <div className="flex justify-between">
@@ -189,7 +187,7 @@ export default function ReservationPage() {
               <div className="h-px w-24 bg-primary/50" />
             </div>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light max-w-2xl mx-auto">
-              Reserve your spot for an unforgettable dining experience
+              Pick your date, choose a table, and we&apos;ll have everything ready for you
             </p>
           </div>
 
